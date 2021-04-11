@@ -120,5 +120,7 @@ public class Msg {
         /** Update denoms inventory */          DenomsInventoryUpdate,
         /** Denoms inventory check */       DenomsInventoryCheck,
         /** BAMS Poll Acknowledgement*/           BAMSAck,
+        /** Shutdown */                 Shutdown,
+        /** Reset */                    Reset,
     } // Type
 } // Msg

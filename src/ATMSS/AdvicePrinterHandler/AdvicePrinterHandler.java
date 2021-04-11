@@ -5,6 +5,7 @@ import AppKickstarter.AppKickstarter;
 import AppKickstarter.misc.Msg;
 
 public class AdvicePrinterHandler extends HWHandler {
+    private static boolean operate = true;
 
     public AdvicePrinterHandler(String id, AppKickstarter appKickstarter) {
         super(id, appKickstarter);
@@ -12,21 +13,24 @@ public class AdvicePrinterHandler extends HWHandler {
 
     protected void processMsg(Msg msg) {            //this processMsg is for that of DepositSlotMBox (mbox) <== inheritance property
         //From EmulatorController send to MBox, process it here, then send to atmssMBox
-        switch (msg.getType()) {                    //Sean: change msg types to ones i need (dont forget to add to enums type in Msg Class!!)
-            case Advice:
-                handleAdvice(msg.getDetails());
-                break;
+        if (operate) {
+            switch (msg.getType()) {                    //Sean: change msg types to ones i need (dont forget to add to enums type in Msg Class!!)
+                case Advice:
+                    handleAdvice(msg.getDetails());
+                    break;
 
-            case Print:
-                handleAdvicePrint(msg.getDetails());
-                break;
+                case Print:
+                    handleAdvicePrint(msg.getDetails());
+                    break;
 
-            case Error:
-                atmss.send(new Msg(id, mbox, Msg.Type.Error, msg.getDetails()));
-                break;
+                case Error:
+                    atmss.send(new Msg(id, mbox, Msg.Type.Error, msg.getDetails()));
+                    operate = false;
+                    break;
 
-            default:
-                log.warning(id + ": unknown message type: [" + msg + "]");
+                default:
+                    log.warning(id + ": unknown message type: [" + msg + "]");
+            }
         }
     } // processMsg
 
@@ -39,4 +43,13 @@ public class AdvicePrinterHandler extends HWHandler {
         log.info(id + ": advice printed");
     }
 
+    protected void shutdown() {
+        super.shutdown();
+        operate = false;
+    }
+
+    protected void reset() {
+        super.reset();
+        operate = true;
+    }
 }

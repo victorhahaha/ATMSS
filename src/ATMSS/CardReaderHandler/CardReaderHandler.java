@@ -8,6 +8,8 @@ import AppKickstarter.misc.*;
 //======================================================================
 // CardReaderHandler
 public class CardReaderHandler extends HWHandler {
+    private static boolean operate = true;
+
     //------------------------------------------------------------
     // CardReaderHandler
     public CardReaderHandler(String id, AppKickstarter appKickstarter) {
@@ -18,26 +20,28 @@ public class CardReaderHandler extends HWHandler {
     //------------------------------------------------------------
     // processMsg
     protected void processMsg(Msg msg) {
-        switch (msg.getType()) {
-            case CR_CardInserted:
-                atmss.send(new Msg(id, mbox, Msg.Type.CR_CardInserted, msg.getDetails()));
-                handleCardInsert();
-                break;
+        if (operate) {
+            switch (msg.getType()) {
+                case CR_CardInserted:
+                    atmss.send(new Msg(id, mbox, Msg.Type.CR_CardInserted, msg.getDetails()));
+                    handleCardInsert();
+                    break;
 
-            case CR_EjectCard:      //receive msg from ATMSS (write in ATMSS a method to send CR_ejectcard msg to card handler)
-                handleCardEject();
-                break;
+                case CR_EjectCard:      //receive msg from ATMSS (write in ATMSS a method to send CR_ejectcard msg to card handler)
+                    handleCardEject();
+                    break;
 
-            case CR_CardRemoved:
-                handleCardRemove();
-                break;
+                case CR_CardRemoved:
+                    handleCardRemove();
+                    break;
 
-            case CR_RetainCard:
-                handleCardRetain();
-                break;
+                case CR_RetainCard:
+                    handleCardRetain();
+                    break;
 
-            default:
-                log.warning(id + ": unknown message type: [" + msg + "]");
+                default:
+                    log.warning(id + ": unknown message type: [" + msg + "]");
+            }
         }
     } // processMsg
 
@@ -65,5 +69,16 @@ public class CardReaderHandler extends HWHandler {
     protected void handleCardRetain() {
         log.info(id + ": card retained");
     } // handleCardRetain
+
+    protected void shutdown() {
+        super.shutdown();
+        operate = false;
+    }
+
+    protected void reset() {
+        super.reset();
+        operate = true;
+        handleCardRemove();
+    }
 
 } // CardReaderHandler

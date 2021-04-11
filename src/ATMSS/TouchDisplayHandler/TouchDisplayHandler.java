@@ -8,6 +8,7 @@ import AppKickstarter.misc.*;
 //======================================================================
 // TouchDisplayHandler
 public class TouchDisplayHandler extends HWHandler {
+    private static boolean operate = true;
     //------------------------------------------------------------
     // TouchDisplayHandler
     public TouchDisplayHandler(String id, AppKickstarter appKickstarter) throws Exception {
@@ -18,71 +19,73 @@ public class TouchDisplayHandler extends HWHandler {
     //------------------------------------------------------------
     // processMsg
     protected void processMsg(Msg msg) {
-        switch (msg.getType()) {
-            case TD_MouseClicked:
-                atmss.send(new Msg(id, mbox, Msg.Type.TD_MouseClicked, msg.getDetails()));
-                break;
+        if (operate) {
+            switch (msg.getType()) {
+                case TD_MouseClicked:
+                    atmss.send(new Msg(id, mbox, Msg.Type.TD_MouseClicked, msg.getDetails()));
+                    break;
 
-            case TD_UpdateDisplay:
-                handleUpdateDisplay(msg);
-                break;
+                case TD_UpdateDisplay:
+                    handleUpdateDisplay(msg);
+                    break;
 
-            case TD_SelectAccount:
-                accountSelect(msg.getDetails());
-                break;
+                case TD_SelectAccount:
+                    accountSelect(msg.getDetails());
+                    break;
 
-            case TextTyped:
-                amountFieldChange(msg.getDetails());
-                break;
+                case TextTyped:
+                    amountFieldChange(msg.getDetails());
+                    break;
 
-            case GetAccount:
-                atmss.send(new Msg(id, mbox, Msg.Type.GetAccount, ""));
-                break;
+                case GetAccount:
+                    atmss.send(new Msg(id, mbox, Msg.Type.GetAccount, ""));
+                    break;
 
-            case Selected_Acc:
-                atmss.send(new Msg(id, mbox, Msg.Type.Selected_Acc, msg.getDetails()));
-                break;
+                case Selected_Acc:
+                    atmss.send(new Msg(id, mbox, Msg.Type.Selected_Acc, msg.getDetails()));
+                    break;
 
-            case DepositResult:
-                DepositResult(msg.getDetails());
-                break;
+                case DepositResult:
+                    DepositResult(msg.getDetails());
+                    break;
 
-            case MoneyTransferResult:
-                moneyTransferResult(msg.getDetails());
-                break;
+                case MoneyTransferResult:
+                    moneyTransferResult(msg.getDetails());
+                    break;
 
-            case Dispense:
-                cashDispense(msg.getDetails());
-                break;
+                case Dispense:
+                    cashDispense(msg.getDetails());
+                    break;
 
-            case DispenseFinish:
-                cashDispenseFinish(msg.getDetails());
-                break;
+                case DispenseFinish:
+                    cashDispenseFinish(msg.getDetails());
+                    break;
 
-            case EnquiryResult:
-                accountEnquiry(msg.getDetails());
-                break;
+                case EnquiryResult:
+                    accountEnquiry(msg.getDetails());
+                    break;
 
-            case Denom_sum:
-                cashDeposit(msg.getDetails());
-                break;
+                case Denom_sum:
+                    cashDeposit(msg.getDetails());
+                    break;
 
-            case LoggedIn:
-                if (msg.getDetails().equals("Success")){
-                    handleLogin();
-                }
-                break;
+                case LoggedIn:
+                    if (msg.getDetails().equals("Success")){
+                        handleLogin();
+                    }
+                    break;
 
-            case Error:
-                handleErrorPage(msg.getDetails());
-                break;
+                case Error:
+                    handleErrorPage(msg.getDetails());
+                    break;
 
-            case ErrorRedirect:
-                atmss.send(new Msg(id, mbox, Msg.Type.ErrorRedirect, msg.getDetails()));
-                break;
+                case ErrorRedirect:
+                    atmss.send(new Msg(id, mbox, Msg.Type.ErrorRedirect, msg.getDetails()));
+                    break;
 
-            default:
-                log.warning(id + ": unknown message type: [" + msg + "]");
+                default:
+                    log.warning(id + ": unknown message type: [" + msg + "]");
+            }
         }
     } // processMsg
 
@@ -131,5 +134,15 @@ public class TouchDisplayHandler extends HWHandler {
 
     protected void handleErrorPage(String details) {
         log.info(id + ": Error Message Received: " + details);
+    }
+
+    protected void shutdown() {
+        super.shutdown();
+        operate = false;
+    }
+
+    protected void reset() {
+        super.reset();
+        operate = true;
     }
 } // TouchDisplayHandler

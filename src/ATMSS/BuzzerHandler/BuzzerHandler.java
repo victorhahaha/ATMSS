@@ -5,6 +5,8 @@ import ATMSS.HWHandler.HWHandler;
 import AppKickstarter.misc.Msg;
 
 public class BuzzerHandler extends HWHandler {
+    private static boolean operate = true;
+
     public BuzzerHandler(String id, ATMSSStarter atmssStarter) {
         super(id, atmssStarter);
     }
@@ -12,17 +14,29 @@ public class BuzzerHandler extends HWHandler {
     //------------------------------------------------------------
     // processMsg
     protected void processMsg(Msg msg) {
-        switch (msg.getType()) {
-            case Alert:
-                alert(msg.getDetails());
-                break;
+        if (operate) {
+            switch (msg.getType()) {
+                case Alert:
+                    alert(msg.getDetails());
+                    break;
 
-            default:
-                log.warning(id + ": unknown message type: [" + msg + "]");
+                default:
+                    log.warning(id + ": unknown message type: [" + msg + "]");
+            }
         }
     } // processMsg
 
     protected void alert(String msg) {
         log.info(id + ": alert -- " + msg);
+    }
+
+    protected void shutdown() {
+        super.shutdown();
+        operate = false;
+    }
+
+    protected void reset() {
+        super.reset();
+        operate = true;
     }
 }

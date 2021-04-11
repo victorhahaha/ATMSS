@@ -32,6 +32,14 @@ public class HWHandler extends AppThread {
                     atmss.send(new Msg(id, mbox, Msg.Type.PollAck, id + " is up!"));
                     break;
 
+                case Shutdown:
+                    shutdown();
+                    break;
+
+                case Reset:
+                    reset();
+                    break;
+
                 case Terminate:
                     quit = true;
                     break;
@@ -52,4 +60,12 @@ public class HWHandler extends AppThread {
     protected void processMsg(Msg msg) {
         log.warning(id + ": unknown message type: [" + msg + "]");
     } // processMsg
+
+    protected void shutdown() {
+        log.info(id + ": shutdown");
+    }
+
+    protected void reset() {
+        log.info(id + ": reset");
+    }
 }

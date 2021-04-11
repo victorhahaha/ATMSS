@@ -167,10 +167,20 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
         reloadStage("TouchDisplayEmulator.fxml", "Error", details);
     }
 
+    protected void shutdown() {
+        super.shutdown();
+        reloadStage("TouchDisplayEmulator.fxml", "BlankScreen");
+    }
+
+    protected void reset() {
+        super.reset();
+        reloadStage("TouchDisplayEmulator.fxml", "Welcome");
+    }
+
     //------------------------------------------------------------
     // reloadStage
-    private void reloadStage(String fxmlFName, String detail) {
-        reloadStage(fxmlFName, detail, "");
+    private void reloadStage(String fxmlFName, String page) {
+        reloadStage(fxmlFName, page, "");
     }
 
     private void reloadStage(String fxmlFName, String page, String detail) {
