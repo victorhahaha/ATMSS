@@ -23,7 +23,6 @@ public class AdvicePrinterHandler extends HWHandler {
 
             case Error:
                 atmss.send(new Msg(id, mbox, Msg.Type.Error, msg.getDetails()));
-                operate = false;
                 break;
 
             default:

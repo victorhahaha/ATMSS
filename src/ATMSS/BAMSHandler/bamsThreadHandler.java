@@ -15,7 +15,6 @@ public class bamsThreadHandler extends AppThread {
     private final String urlPrefix = "http://cslinux0.comp.hkbu.edu.hk/comp4107_20-21_grp11/";    //http://cslinux0.comp.hkbu.edu.hk/~comp4107/test/
     private static String credential = "";
     private int BAMSTimerID = -1;
-    private static boolean operate = true;
 
     public bamsThreadHandler(String id, AppKickstarter appKickstarter) {
         super(id, appKickstarter);
@@ -34,9 +33,6 @@ public class bamsThreadHandler extends AppThread {
             if (!msg.getType().equals(Msg.Type.TimesUp)) {
                 Timer.cancelTimer(id, mbox, BAMSTimerID);
                 BAMSTimerID = Timer.setTimer(id, mbox, BAMSTimerID, 15000);
-            }
-            if (!operate && !msg.getType().equals(Msg.Type.Terminate)) {
-                continue;
             }
 
             switch (msg.getType()) {
@@ -124,10 +120,6 @@ public class bamsThreadHandler extends AppThread {
                             atmss.send(new Msg(id, mbox, Msg.Type.Error, "Network connection problem"));
                         }
                     }
-                    break;
-
-                case Error:
-                    operate = false;
                     break;
 
                 case Terminate:
