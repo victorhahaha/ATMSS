@@ -18,7 +18,7 @@ public class ATMSS extends AppThread {
     private int BAMSResponseTimerID = -1;
 
     private boolean loggedIn = false;
-    private String transaction = "";
+    private static String transaction = "";
     private static String cardNum = "";
     private static String selectedAcc = "";
     private static String transferAcc = "";
@@ -132,14 +132,15 @@ public class ATMSS extends AppThread {
                 case ReceiveAccount:    //receive accounts info of specific card from BAMS
                     if (!selectedAcc.equals("") && !msg.getDetails().contains("/")) {       //only for money transfer at this moment
                         //this card has only one account and cannot do money transfer
-                        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.Error, "This card has only one account\n\nCannot do money transfer"));
+                        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.Error, "This card has only one account\n\nCannot do " + transaction));
                     } else {
                         touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_SelectAccount, transaction + "_" + msg.getDetails()));
                     }
                     break;
 
                 case Selected_Acc:      //receive input of selected account
-                    if (transaction.equals("")) {       //choose which account to operate
+                    if (!transaction.equals("Money Transfer")) {       //choose which account to operate
+                        transaction = "";
                         selectedAcc = msg.getDetails();        //on logout please clear this value
                     } else {            //choose account to transfer money
                         if (!selectedAcc.equals("")) {
@@ -362,6 +363,8 @@ public class ATMSS extends AppThread {
 
                         case "Money Transfer":
 
+                        case "Change Operating Account":
+
                         case "Cash Withdrawal":
                             if (msg.getDetails().equals("Dispenser slot time out")) {
                                 touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "Welcome_" + denom100 + " " + denom500 + " " + denom1000 + "/" + malfunctions));
@@ -526,6 +529,7 @@ public class ATMSS extends AppThread {
                             BuzzerMBox.send(new Msg(id, mbox, Msg.Type.Alert, "Deposit Slot Opened!"));
 
                             break;
+                        case "Change Operating Account":
                         case "Money Transfer":
                             //set transaction to true
                             //change touch screen display to choose which acc to transfer from

@@ -41,7 +41,7 @@ public class TouchDisplayEmulatorController {
     public Label confirmationInformationLabel;
     public HBox confirmationHBox;
 
-    public String[] funcAry = {"Cash Deposit", "Money Transfer", "Cash Withdrawal", "Account Balance Enquiry", "five", "six", "seven", "eight", "nine", "ten"};
+    public String[] funcAry = {"Cash Deposit", "Money Transfer", "Cash Withdrawal", "Account Balance Enquiry", "Change Operating Account"};
 
     private final Integer startTime = 4;
     private Integer countDown = startTime;

@@ -106,7 +106,7 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
     protected void accountSelect(String acc) {
         super.accountSelect(acc);
         String[] details = acc.split("_");
-        if (details[0].equals("")) {
+        if (!details[0].equals("Money Transfer")) {
             //account selection before main menu
             //reloadStage("TouchDisplayMainMenu.fxml", "Initial Account Select", list of accounts);
             reloadStage("TouchDisplayMainMenu.fxml", "Initial Account Select", details[1]);
