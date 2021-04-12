@@ -3,6 +3,7 @@ package ATMSS.CardReaderHandler.Emulator;
 import ATMSS.ATMSSStarter;
 import ATMSS.CardReaderHandler.CardReaderHandler;
 
+import AppKickstarter.misc.Msg;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -96,4 +97,57 @@ public class CardReaderEmulator extends CardReaderHandler {
 		cardReaderEmulatorController.updateCardStatus("Card Reader Empty");
 	} // handleCardRetain
 
+	protected void reset() {
+		super.reset();
+		diagnostic();
+		cardReaderEmulatorController.card1Btn.setDisable(false);
+		cardReaderEmulatorController.card2Btn.setDisable(false);
+		cardReaderEmulatorController.card3Btn.setDisable(false);
+		cardReaderEmulatorController.cardReaderTextArea.setText("");
+	}
+
+	private void diagnostic() {
+		int stepNum = 5;
+		for (int i = 0; i < stepNum; i++) {
+				switch (i) {
+					case 3:
+					case 0:
+						handleCardInsert();
+						if (statusNotEqual("Card Inserted")) {
+							return;
+						}
+						break;
+
+					case 1:
+						handleCardEject();
+						if (statusNotEqual("Card Ejected")) {
+							return;
+						}
+						break;
+
+					case 2:
+						handleCardRemove();
+						if (statusNotEqual("Card Reader Empty")) {
+							return;
+						}
+						break;
+
+					case 4:
+						handleCardRetain();
+						if (statusNotEqual("Card Reader Empty")) {
+							return;
+						}
+						break;
+				}
+		}
+		atmss.send(new Msg(id, mbox, Msg.Type.Reset, "healthy"));
+	}
+
+	private boolean statusNotEqual(String status) {
+		if (!cardReaderEmulatorController.cardStatusField.getText().equals(status)) {
+			atmss.send(new Msg(id, mbox, Msg.Type.Reset, "reset failure"));
+			return true;
+		}
+		return false;
+	}
 } // CardReaderEmulator

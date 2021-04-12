@@ -44,13 +44,7 @@ public class DispenserSlotEmulatorController {
         Button btn = (Button) actionEvent.getSource();
 
         if ("Withdraw".equals(btn.getText())) {
-            if (dispense && (amtField.getText().length() != 0)) {
-                DispenserSlotTextArea.appendText("Withdrawing " + amtField.getText() + "\n");
-                DispenserSlotMBox.send(new Msg(id, DispenserSlotMBox, Msg.Type.DispenseFinish, amtField.getText()));        //when finish withdraw close the slot
-                amtField.setText("");
-            } else {
-                DispenserSlotTextArea.appendText("Slot not open! Unable to withdraw!\n");
-            }
+            dispense(false);
         } else {
             log.warning(id + ": unknown button: [" + btn.getText() + "]");
         }
@@ -125,4 +119,17 @@ public class DispenserSlotEmulatorController {
         }
     }
 
+    protected boolean dispense(boolean diagnostic) {
+        if (dispense && (amtField.getText().length() != 0)) {
+            DispenserSlotTextArea.appendText("Withdrawing " + amtField.getText() + "\n");
+            if (!diagnostic) {
+                DispenserSlotMBox.send(new Msg(id, DispenserSlotMBox, Msg.Type.DispenseFinish, amtField.getText()));        //when finish withdraw close the slot
+            }
+            amtField.setText("");
+            return true;
+        } else {
+            DispenserSlotTextArea.appendText("Slot not open! Unable to withdraw!\n");
+            return false;
+        }
+    }
 }

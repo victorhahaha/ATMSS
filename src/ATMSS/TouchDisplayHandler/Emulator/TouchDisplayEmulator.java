@@ -164,12 +164,22 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 
     protected void shutdown() {
         super.shutdown();
-        reloadStage("TouchDisplayEmulator.fxml", "BlankScreen");
+        try {
+            reloadStage("TouchDisplayEmulator.fxml", "BlankScreen");
+            atmss.send(new Msg(id, mbox, Msg.Type.Shutdown, "shutdown okay"));
+        } catch (Exception e) {
+            atmss.send(new Msg(id, mbox, Msg.Type.Shutdown, "shutdown failed"));
+        }
     }
 
     protected void reset() {
         super.reset();
-        reloadStage("TouchDisplayEmulator.fxml", "Welcome");
+        try {
+            reloadStage("TouchDisplayEmulator.fxml", "Welcome");
+            atmss.send(new Msg(id, mbox, Msg.Type.Reset, "healthy"));
+        } catch (Exception e) {
+            atmss.send(new Msg(id, mbox, Msg.Type.Reset, "reset failure"));
+        }
     }
 
     //------------------------------------------------------------
@@ -308,6 +318,7 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
                 } catch (Exception e) {
                     log.severe(id + ": failed to load " + fxmlFName);
                     e.printStackTrace();
+                    atmss.send(new Msg(id, mbox, Msg.Type.Error, ""));
                 }
             }
         });

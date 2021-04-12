@@ -26,8 +26,9 @@ public class BuzzerHandler extends HWHandler {
         }
     } // processMsg
 
-    protected void alert(String msg) {
+    protected boolean alert(String msg) {
         log.info(id + ": alert -- " + msg);
+        return true;
     }
 
     protected void shutdown() {

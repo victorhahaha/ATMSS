@@ -60,15 +60,7 @@ public class DepositSlotEmulatorController {
 	    		break;
 	    		
     	    case "Deposit":
-    	    	if (deposit && (amtField.getText().length() != 0 )) {
-    	    		DepositSlotTextArea.appendText("Depositing " + amtField.getText()+"\n");
-        	    	amtField.setText("");
-        	    	DepositSlotMBox.send(new Msg(id, DepositSlotMBox, Msg.Type.Denom_sum, (""+denom100+" "+denom500+" "+denom1000))); //cardNumField.getText()
-        	    	DepositSlotMBox.send(new Msg(id, DepositSlotMBox, Msg.Type.Deposit, ("CloseSlot")));		//when finish deposit close the slot
-        	    	denom100 = denom500 = denom1000 = 0;
-    	    	}else {
-    	    		DepositSlotTextArea.appendText("Slot not open! Unable to deposit!\n");
-    	    	}
+    	    	deposit(false);
     	    break;
     	    
     	    //handle remove
@@ -104,5 +96,21 @@ public class DepositSlotEmulatorController {
     		deposit = true;
     	}
     }
+
+    boolean deposit(boolean diagnostic) {
+		if (deposit && (amtField.getText().length() != 0 )) {
+			DepositSlotTextArea.appendText("Depositing " + amtField.getText()+"\n");
+			amtField.setText("");
+			if (!diagnostic) {
+				DepositSlotMBox.send(new Msg(id, DepositSlotMBox, Msg.Type.Denom_sum, (""+denom100+" "+denom500+" "+denom1000))); //cardNumField.getText()
+			}
+			DepositSlotMBox.send(new Msg(id, DepositSlotMBox, Msg.Type.Deposit, ("CloseSlot")));		//when finish deposit close the slot
+			denom100 = denom500 = denom1000 = 0;
+			return true;
+		}else {
+			DepositSlotTextArea.appendText("Slot not open! Unable to deposit!\n");
+			return false;
+		}
+	}
     
 }

@@ -3,6 +3,7 @@ package ATMSS.DepositSlotHandler.Emulator;
 import ATMSS.ATMSSStarter;
 import ATMSS.DepositSlotHandler.DepositSlotHandler;
 
+import AppKickstarter.misc.Msg;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -78,5 +79,23 @@ public class DepositSlotEmulator extends DepositSlotHandler{
                 myStage.toFront();
             }
         });
+    }
+
+    protected void reset() {
+        super.reset();
+        diagnostic();
+        DepositSlotEmulatorController.amtField.setText("");
+        DepositSlotEmulatorController.DepositSlotTextArea.setText("");
+    }
+
+    private void diagnostic() {
+        handleDeposit("OpenSlot");
+        DepositSlotEmulatorController.amtField.setText("0");
+        if (DepositSlotEmulatorController.deposit(true)) {
+            handleDeposit("CloseSlot");
+            atmss.send(new Msg(id, mbox, Msg.Type.Reset, "healthy"));
+        } else {
+            atmss.send(new Msg(id, mbox, Msg.Type.Reset, "reset failure"));
+        }
     }
 }

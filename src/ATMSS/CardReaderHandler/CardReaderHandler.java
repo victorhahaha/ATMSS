@@ -78,7 +78,6 @@ public class CardReaderHandler extends HWHandler {
     protected void reset() {
         super.reset();
         operate = true;
-        handleCardRemove();
     }
 
 } // CardReaderHandler

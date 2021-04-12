@@ -2,6 +2,7 @@ package ATMSS.BuzzerHandler.Emulator;
 
 import ATMSS.ATMSSStarter;
 import ATMSS.BuzzerHandler.BuzzerHandler;
+import AppKickstarter.misc.Msg;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -42,7 +43,7 @@ public class BuzzerEmulator extends BuzzerHandler {
         myStage.show();
     }
 
-    protected void alert(String msg) {
+    protected boolean alert(String msg) {
         super.alert(msg);
         Platform.runLater(new Runnable() {
             @Override
@@ -52,7 +53,19 @@ public class BuzzerEmulator extends BuzzerHandler {
                 buzzerEmulatorController.appendTextArea(msg);
             }
         });
+        return true;
+    }
 
+    protected void reset() {
+        super.reset();
+        diagnostic();
+    }
 
+    private void diagnostic() {
+        if (alert("")) {
+            atmss.send(new Msg(id, mbox, Msg.Type.Reset, "healthy"));
+        } else {
+            atmss.send(new Msg(id, mbox, Msg.Type.Reset, "reset failure"));
+        }
     }
 }

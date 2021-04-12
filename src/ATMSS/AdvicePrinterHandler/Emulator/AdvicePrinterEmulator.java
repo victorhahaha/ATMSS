@@ -3,6 +3,7 @@ package ATMSS.AdvicePrinterHandler.Emulator;
 import ATMSS.ATMSSStarter;
 import ATMSS.AdvicePrinterHandler.AdvicePrinterHandler;
 
+import AppKickstarter.misc.Msg;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -56,5 +57,19 @@ public class AdvicePrinterEmulator extends AdvicePrinterHandler {
     	AdvicePrinterEmulatorController.appendTextArea("Printing Advice...");
         AdvicePrinterEmulatorController.appendTextArea(msg);
         AdvicePrinterEmulatorController.clearAdvice();
+    }
+
+    protected void reset() {
+        super.reset();
+        diagnostic();
+    }
+
+    private void diagnostic() {
+        handleAdvicePrint("");
+        if (AdvicePrinterEmulatorController.takeAdvice(true)) {
+            atmss.send(new Msg(id, mbox, Msg.Type.Reset, "healthy"));
+        } else {
+            atmss.send(new Msg(id, mbox, Msg.Type.Reset, "reset failure"));
+        }
     }
 }

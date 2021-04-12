@@ -61,7 +61,5 @@ public class KeypadEmulator extends KeypadHandler {
                 myStage.toFront();
             }
         });
-
-
     }
 } // KeypadEmulator

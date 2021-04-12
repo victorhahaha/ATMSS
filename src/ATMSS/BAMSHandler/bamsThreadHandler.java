@@ -32,10 +32,12 @@ public class bamsThreadHandler extends AppThread {
 
             log.fine(id + ": message received: [" + msg + "].");
             if (!msg.getType().equals(Msg.Type.TimesUp)) {
+                log.info(id + ": bams timer reset");
                 Timer.cancelTimer(id, mbox, BAMSTimerID);
-                BAMSTimerID = Timer.setTimer(id, mbox, BAMSTimerID, 15000);
+                Timer.setTimer(id, mbox, 15000, BAMSTimerID);
             }
             if (!operate && !(msg.getType().equals(Msg.Type.Terminate) || msg.getType().equals(Msg.Type.Reset))) {
+                log.info(id +": not operating");
                 continue;
             }
 

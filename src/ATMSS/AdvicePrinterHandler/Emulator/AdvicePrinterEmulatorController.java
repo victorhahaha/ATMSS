@@ -39,14 +39,7 @@ public class AdvicePrinterEmulatorController {
         Button btn = (Button) actionEvent.getSource();
 
         if ("Take Advice".equals(btn.getText())) {
-            if (paperInventory > 0) {
-                AdvicePrinterTextArea.setText("");
-                paperInventory--;
-                if (paperInventory <= 0) {      //run out of paper
-                    //send msg to ATMSS that advice printer run out of paper
-                    AdvicePrinterMBox.send(new Msg(id, AdvicePrinterMBox, Msg.Type.Error, "Advice Printer run out of paper"));
-                }
-            }
+            takeAdvice(false);
         } else {
             log.warning(id + ": unknown button: [" + btn.getText() + "]");
         }
@@ -72,7 +65,6 @@ public class AdvicePrinterEmulatorController {
         if (details.length == 1) {
             AdvicePrinterTextArea.appendText(status + "\n");
         } else {
-
             AdvicePrinterTextArea.appendText("Date and time: " + dateTimeFormatter.format(timeNow) + "\n");
             for (int i = 0; i < details.length; i++) {
                 switch (i) {
@@ -104,4 +96,21 @@ public class AdvicePrinterEmulatorController {
             }
         }
     } // appendTextArea
+
+    boolean takeAdvice(boolean diagnostic) {
+        if (paperInventory > 0) {
+            AdvicePrinterTextArea.setText("");
+            paperInventory--;
+            if (paperInventory <= 0) {      //run out of paper
+                if (!diagnostic) {
+                    //if it is not diagnostic
+                    //send msg to ATMSS that advice printer run out of paper
+                    AdvicePrinterMBox.send(new Msg(id, AdvicePrinterMBox, Msg.Type.Error, "Advice Printer run out of paper"));
+                }
+                return false;
+            }
+        }
+        //take advice success
+        return true;
+    }
 }
