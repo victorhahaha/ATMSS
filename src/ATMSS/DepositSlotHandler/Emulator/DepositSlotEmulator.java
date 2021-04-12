@@ -57,13 +57,22 @@ public class DepositSlotEmulator extends DepositSlotHandler{
 
     protected void handleDeposit(String msg) {
         super.handleDeposit(msg);
-        DepositSlotEmulatorController.setTransactionStatus(msg);
+        switch (msg) {
+            case "Confirm":
+                //user confirm the deposit amount
+                DepositSlotEmulatorController.confirmClear();
+                break;
 
-    	if (msg.equals("OpenSlot")) { 		//if is set to true, means deposit slot open
-    		DepositSlotEmulatorController.updateCardStatus("Deposit Slot is open");
-    	}else if (msg.equals("CloseSlot")) {
-    		DepositSlotEmulatorController.updateCardStatus("Deposit Slot is closed");
-    	}
+            case "OpenSlot":
+                DepositSlotEmulatorController.updateCardStatus("Deposit Slot is open");
+                DepositSlotEmulatorController.setTransactionStatus(msg);
+                break;
+
+            case "CloseSlot":
+                DepositSlotEmulatorController.updateCardStatus("Deposit Slot is closed");
+                DepositSlotEmulatorController.setTransactionStatus(msg);
+                break;
+        }
     }
 
     //------------------------------------------------------------

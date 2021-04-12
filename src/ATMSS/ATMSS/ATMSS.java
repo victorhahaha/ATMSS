@@ -560,9 +560,11 @@ public class ATMSS extends AppThread {
                         case "Confirm Amount":
                             //confirm the amount input and send bams deposit request
                             bamsThreadMBox.send(new Msg(id, mbox, Msg.Type.Deposit, cardNum + " " + selectedAcc + " " + amountTyped));
+                            DepositSlotMBox.send(new Msg(id, mbox, Msg.Type.Deposit, "Confirm"));
                             break;
 
-                        case "Cancel":          //reinput amount, need to eject the money?
+                        case "Cancel":
+                            //the deposit slot does not take the money until confirm amount is pressed
                             //set transaction to true
                             amountTyped = "";
                             depositTimerID = Timer.setTimer(id, mbox, 15000);
