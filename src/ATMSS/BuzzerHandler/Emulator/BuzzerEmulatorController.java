@@ -25,7 +25,6 @@ public class BuzzerEmulatorController {
         this.log = log;
         this.buzzerEmulator = buzzerEmulator;
         this.buzzerMBox = appKickstarter.getThread("BuzzerHandler").getMBox();
-        //buzzerEmulator.alert();         //make changes here
     }
 
     public void appendTextArea(String status) {

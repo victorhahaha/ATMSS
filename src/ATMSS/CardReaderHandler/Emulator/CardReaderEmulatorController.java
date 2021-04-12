@@ -110,7 +110,6 @@ public class CardReaderEmulatorController {
                 break;
 
             case "Insert Card":
-                // if (cardNumField.getText().length() != 0) {
                 cardText = cardNumField1.getText() + "-" + cardNumField2.getText();
                 if (cardText.equals("-")) {
                     //no card selected
@@ -126,8 +125,6 @@ public class CardReaderEmulatorController {
                 if (defaultCardSelected != null) {
                     defaultCardSelected.setDisable(true);
                 }
-//		    cardStatusField.setText("Card Inserted");
-                // }
                 break;
 
             case "Remove Card":

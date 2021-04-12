@@ -17,7 +17,6 @@ public class DispenserSlotHandler extends HWHandler {
             switch (msg.getType()) {
                 case Denom_sum:            //use this to represent the denominations for dispenser to dispense
                     handleDispenseCash(msg.getDetails());
-//		atmss.send(new Msg(id, mbox, Msg.Type.Denom_sum, msg.getDetails()));
                     break;
                 case Dispense:   //msg type to open or close relevant slot (indicates start or end of withdraw transaction)
                     handleDispense(msg.getDetails());

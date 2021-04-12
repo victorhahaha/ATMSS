@@ -1,12 +1,7 @@
 package ATMSS.DispenserSlotHandler.Emulator;
 
-import java.util.StringTokenizer;
-
 import ATMSS.ATMSSStarter;
-import ATMSS.DepositSlotHandler.Emulator.DepositSlotEmulator;
-import ATMSS.DepositSlotHandler.Emulator.DepositSlotEmulatorController;
 import ATMSS.DispenserSlotHandler.DispenserSlotHandler;
-
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

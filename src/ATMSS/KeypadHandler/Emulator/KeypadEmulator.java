@@ -23,52 +23,45 @@ public class KeypadEmulator extends KeypadHandler {
     //------------------------------------------------------------
     // KeypadEmulator
     public KeypadEmulator(String id, ATMSSStarter atmssStarter) {
-	super(id, atmssStarter);
-	this.atmssStarter = atmssStarter;
-	this.id = id;
+        super(id, atmssStarter);
+        this.atmssStarter = atmssStarter;
+        this.id = id;
     } // KeypadEmulator
 
 
     //------------------------------------------------------------
     // start
     public void start() throws Exception {
-	Parent root;
-	myStage = new Stage();
-	FXMLLoader loader = new FXMLLoader();
-	String fxmlName = "KeypadEmulator.fxml";
-	loader.setLocation(KeypadEmulator.class.getResource(fxmlName));
-	root = loader.load();
-	keypadEmulatorController = (KeypadEmulatorController) loader.getController();
-	keypadEmulatorController.initialize(id, atmssStarter, log, this);
-	myStage.initStyle(StageStyle.DECORATED);
-	myStage.setScene(new Scene(root, 340, 270));
-	myStage.setTitle("KeypadHandler");
-	myStage.setResizable(false);
-	myStage.setOnCloseRequest((WindowEvent event) -> {
-	    atmssStarter.stopApp();
-	    Platform.exit();
-	});
-	myStage.show();
+        Parent root;
+        myStage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        String fxmlName = "KeypadEmulator.fxml";
+        loader.setLocation(KeypadEmulator.class.getResource(fxmlName));
+        root = loader.load();
+        keypadEmulatorController = (KeypadEmulatorController) loader.getController();
+        keypadEmulatorController.initialize(id, atmssStarter, log, this);
+        myStage.initStyle(StageStyle.DECORATED);
+        myStage.setScene(new Scene(root, 340, 270));
+        myStage.setTitle("KeypadHandler");
+        myStage.setResizable(false);
+        myStage.setOnCloseRequest((WindowEvent event) -> {
+            atmssStarter.stopApp();
+            Platform.exit();
+        });
+        myStage.show();
     } // KeypadEmulator
 
-	protected void alert() {
-		super.alert();
-		KeypadEmulator keypadEmulator = this;
+    protected void alert() {
+        super.alert();
+        KeypadEmulator keypadEmulator = this;
 
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				myStage.toFront();
-				//shake the stage
-//				for (int i = 0; i < 10; i++) {
-//					myStage.setX(myStage.getX()+10);
-//					myStage.setX(myStage.getX()-10);
-//					myStage.setX(myStage.getX()-10);
-//					myStage.setX(myStage.getX()+10);
-//				}
-			}
-		});
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                myStage.toFront();
+            }
+        });
 
 
-	}
+    }
 } // KeypadEmulator

@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;;
+import javafx.stage.WindowEvent;
 
 public class DepositSlotEmulator extends DepositSlotHandler{
     private ATMSSStarter atmssStarter;
@@ -29,7 +29,7 @@ public class DepositSlotEmulator extends DepositSlotHandler{
         Parent root;
         myStage = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        String fxmlName = "DepositSlotEmulator.fxml";        //Sean:      create a DepositSlotEmulator.fxml
+        String fxmlName = "DepositSlotEmulator.fxml";
         loader.setLocation(DepositSlotEmulator.class.getResource(fxmlName));
         root = loader.load();       //error?
         DepositSlotEmulatorController = (DepositSlotEmulatorController) loader.getController();
@@ -50,9 +50,8 @@ public class DepositSlotEmulator extends DepositSlotHandler{
     // handleCardInsert
     protected void handleDepositCash() {
         // fixme
-        super.handleDepositCash();			//do i read the DepositSlotMBox in super and give the details of msg or read in emulator?
+        super.handleDepositCash();
         DepositSlotEmulatorController.appendTextArea("Cash Deposited");
-//        DepositSlotEmulatorController.updateCardStatus("Card Inserted");
     } // handleDepositCash
 
     protected void handleDeposit(String msg) {
@@ -77,33 +76,7 @@ public class DepositSlotEmulator extends DepositSlotHandler{
             @Override
             public void run() {
                 myStage.toFront();
-                //shake the stage
-//				for (int i = 0; i < 10; i++) {
-//					myStage.setX(myStage.getX()+10);
-//					myStage.setX(myStage.getX()-10);
-//					myStage.setX(myStage.getX()-10);
-//					myStage.setX(myStage.getX()+10);
-//				}
             }
         });
     }
-
-    //    //------------------------------------------------------------
-//    // handleCardEject
-//    protected void handleCardEject() {
-//        // fixme
-//        super.handleCardEject();
-//        cardReaderEmulatorController.appendTextArea("Card Ejected");
-//        cardReaderEmulatorController.updateCardStatus("Card Ejected");
-//    } // handleCardEject
-//
-//
-//    //------------------------------------------------------------
-//    // handleCardRemove
-//    protected void handleCardRemove() {
-//        // fixme
-//        super.handleCardRemove();
-//        cardReaderEmulatorController.appendTextArea("Card Removed");
-//        cardReaderEmulatorController.updateCardStatus("Card Reader Empty");
-//    } // handleCardRemove
 }

@@ -70,10 +70,6 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
 
             case "Cash Withdrawal":
 
-//            case "enterPIN":
-//                touchDisplayEmulatorController.changePIN();
-//                break;
-
             case "erasePIN":
                 reloadStage("TouchDisplayEmulator.fxml", msgDetails[0]);
                 break;
@@ -159,7 +155,6 @@ public class TouchDisplayEmulator extends TouchDisplayHandler {
         } else if (TouchDisplayEmulatorController.getCurrentPage() == 6) {
             reloadStage("TouchDisplayEmulator.fxml", "Cash Withdrawal", typed);
         }
-//        touchDisplayEmulatorController.changeAmount(typed);
     }
 
     protected void handleErrorPage(String details) {

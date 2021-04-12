@@ -27,9 +27,9 @@ public class AdvicePrinterEmulator extends AdvicePrinterHandler {
         Parent root;
         myStage = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        String fxmlName = "AdvicePrinterEmulator.fxml";        //Sean:      create a DepositSlotEmulator.fxml
+        String fxmlName = "AdvicePrinterEmulator.fxml";
         loader.setLocation(AdvicePrinterEmulator.class.getResource(fxmlName));
-        root = loader.load();       //error?
+        root = loader.load();
         AdvicePrinterEmulatorController = (AdvicePrinterEmulatorController) loader.getController();
         AdvicePrinterEmulatorController.initialize(id, atmssStarter, log, this);
         myStage.initStyle(StageStyle.DECORATED);

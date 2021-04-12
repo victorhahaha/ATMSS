@@ -1,7 +1,5 @@
 package ATMSS.DepositSlotHandler.Emulator;
 
-import ATMSS.DepositSlotHandler.Emulator.DepositSlotEmulator;
-
 import AppKickstarter.AppKickstarter;
 import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
@@ -49,19 +47,16 @@ public class DepositSlotEmulatorController {
     	    case "$ 100":
     	    	denom100 = denom100+1;
     	    	amtField.setText(""+(denom100*100 + denom500*500+denom1000*1000));
-    	        //cardNumField.setText(appKickstarter.getProperty("CardReader.Card1"));
     	        break;
 
     	    case "$ 500":
 	    	    denom500 = denom500+1;
 	    	    amtField.setText(""+(denom100*100 + denom500*500+denom1000*1000));
-	    		//cardNumField.setText(appKickstarter.getProperty("CardReader.Card2"));
 	    		break;
 
     	    case "$ 1000":
 	    	    denom1000 = denom1000+1;
 	    	    amtField.setText(""+(denom100*100 + denom500*500+denom1000*1000));
-	    		//cardNumField.setText(appKickstarter.getProperty("CardReader.Card3"));
 	    		break;
 	    		
     	    case "Deposit":
@@ -83,21 +78,6 @@ public class DepositSlotEmulatorController {
         	    	denom100 = denom500 = denom1000 = 0;
     	    	}
     		break;
-
-//    	    case "Insert Card":
-//    		if (cardNumField.getText().length() != 0) {
-//    		    DepositSlotMBox.send(new Msg(id, DepositSlotMBox, Msg.Type.CR_CardInserted, cardNumField.getText()));
-//    		    cardReaderTextArea.appendText("Sending " + cardNumField.getText()+"\n");
-//    		    cardStatusField.setText("Card Inserted");
-//    		}
-//    		break;
-
-//    	    case "Remove Card":
-//    	        if (cardStatusField.getText().compareTo("Card Ejected") == 0) {
-//    		    cardReaderTextArea.appendText("Removing card\n");
-//    		    DepositSlotMBox.send(new Msg(id, DepositSlotMBox, Msg.Type.CR_CardRemoved, cardNumField.getText()));
-//    		}
-//    		break;
 
     	    default:
     	        log.warning(id + ": unknown button: [" + btn.getText() + "]");

@@ -11,8 +11,8 @@ import java.util.logging.*;
 
 public class bamsThreadHandler extends AppThread {
     protected MBox atmss = null;
-    private BAMSHandler bams = null;
-    private final String urlPrefix = "http://cslinux0.comp.hkbu.edu.hk/comp4107_20-21_grp11/";    //http://cslinux0.comp.hkbu.edu.hk/~comp4107/test/
+    private BAMSHandler bams;
+    private final String urlPrefix = "http://cslinux0.comp.hkbu.edu.hk/comp4107_20-21_grp11/";
     private static String credential = "";
     private int BAMSTimerID = -1;
     private static boolean operate = true;
@@ -165,7 +165,6 @@ public class bamsThreadHandler extends AppThread {
         String pin = tokens.nextToken();
 
         System.out.println("Login:");
-        //String cred = bams.login("12345678-0", "456123789");
         credential = bams.login(cardnum, pin);    //login returns string //456123789
         System.out.println("cred: " + credential);
         System.out.println();
@@ -186,11 +185,6 @@ public class bamsThreadHandler extends AppThread {
     //------------------------------------------------------------
     // testGetAcc
     static String testGetAcc(BAMSHandler bams, String cardNum) throws BAMSInvalidReplyException, IOException {
-
-//        System.out.println("GetAcc:");
-//        String accounts = bams.getAccounts("12345678-1", "cred-1");
-//        System.out.println("accounts: " + accounts);
-//        System.out.println();
         return bams.getAccounts(cardNum, credential);
     } // testGetAcc
 
@@ -204,9 +198,6 @@ public class bamsThreadHandler extends AppThread {
     // testWithdraw
     static int testWithdraw(BAMSHandler bams, String cardNo, String accNo, String amount) throws BAMSInvalidReplyException, IOException {
         return bams.withdraw(cardNo, accNo, credential, amount);
-//        int outAmount = bams.withdraw("12345678-2", "111-222-332","cred-2", "109702");
-//        System.out.println("outAmount: " + outAmount);
-//        System.out.println();
     } // testWithdraw
 
     private void cashWithdraw(String details) throws IOException, BAMSInvalidReplyException {
@@ -219,10 +210,6 @@ public class bamsThreadHandler extends AppThread {
     // testDeposit
     static double testDeposit(BAMSHandler bams, String cardNo, String accNo, String amount) throws BAMSInvalidReplyException, IOException {
         return bams.deposit(cardNo, accNo, credential, amount);
-//        System.out.println("Deposit:");
-//        double depAmount = bams.deposit("12345678-3", "111-222-333","cred-3", "109703");
-//        System.out.println("depAmount: " + depAmount);
-//        System.out.println();
     } // testDeposit
 
     private void cashDeposit(String details) throws IOException, BAMSInvalidReplyException {
@@ -248,10 +235,6 @@ public class bamsThreadHandler extends AppThread {
     // testTransfer
     static double testTransfer(BAMSHandler bams, String cardNo, String fromAcc, String toAcc, String amount) throws BAMSInvalidReplyException, IOException {
         return bams.transfer(cardNo, credential, fromAcc, toAcc, amount);
-//        System.out.println("Transfer:");
-//        double transAmount = bams.transfer("12345678-5", "cred-5","111-222-335", "11-222-336", "109705");
-//        System.out.println("transAmount: " + transAmount);
-//        System.out.println();
     } // testTransfer
 
     private void moneyTransfer(String details) throws IOException, BAMSInvalidReplyException {

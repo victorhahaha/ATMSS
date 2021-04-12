@@ -69,30 +69,23 @@ public class TouchDisplayEmulatorController {
         int y = (int) mouseEvent.getY();
 
         log.fine(id + ": mouse clicked: -- (" + x + ", " + y + ")");
-        //touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, x + " " + y));
         if (loggedIn) {
-            //use Java Switch to send diff message types depending on x-y coord
-            //not sending x-y coord anymore, we just send text
-            switch (mouseEvent.getSource().getClass().getSimpleName()) {
-                case "StackPane":
-                    StackPane targetPane = (StackPane) mouseEvent.getSource();
-                    Label targetLabel = (Label) targetPane.getChildren().get(0);
-                    Pattern accPattern = Pattern.compile("\\d{3}-\\d{3}-\\d{3}");
-                    Matcher accMatcher = accPattern.matcher(targetLabel.getText());
-                    if (accMatcher.matches()) {
-                        if (currentPage == 2) {
-                            operatingAcc = targetLabel.getText();
-                            touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_UpdateDisplay, "MainMenu"));
-                        }
-                        touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.Selected_Acc, targetLabel.getText()));
-                    } else {
-                        touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, targetLabel.getText()));
+            if ("StackPane".equals(mouseEvent.getSource().getClass().getSimpleName())) {
+                StackPane targetPane = (StackPane) mouseEvent.getSource();
+                Label targetLabel = (Label) targetPane.getChildren().get(0);
+                Pattern accPattern = Pattern.compile("\\d{3}-\\d{3}-\\d{3}");
+                Matcher accMatcher = accPattern.matcher(targetLabel.getText());
+                if (accMatcher.matches()) {
+                    if (currentPage == 2) {
+                        operatingAcc = targetLabel.getText();
+                        touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_UpdateDisplay, "MainMenu"));
                     }
-                    break;
-
-                default:
-                    touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, x + " " + y + " Logged In: " + loggedIn));
-                    break;
+                    touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.Selected_Acc, targetLabel.getText()));
+                } else {
+                    touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, targetLabel.getText()));
+                }
+            } else {
+                touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_MouseClicked, x + " " + y + " Logged In: " + loggedIn));
             }
 
         } else {
@@ -100,18 +93,9 @@ public class TouchDisplayEmulatorController {
         }
     } // td_mouseClick
 
-    public boolean getLoggedIn() {
-        return loggedIn;
-    }
-
     public void setLoginTrue() {
         loggedIn = true;
         touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.GetAccount, ""));
-    }
-
-    public void setLoginFalse() {
-        loggedIn = false;
-        //touchDisplayMBox.send(new Msg(id, touchDisplayMBox, Msg.Type.TD_UpdateDisplay, "BlankScreen"));
     }
 
     public static int getCurrentPage() {
@@ -130,8 +114,10 @@ public class TouchDisplayEmulatorController {
         String[] detail = details.split("/");
         StringTokenizer denomsTokens = new StringTokenizer(detail[0]);
         if (detail.length > 1 && detail[1].equals("Out of Service")) {
+            //if critical situation occurs, atm is out of service
             blankAmountStringBuild.append(detail[1]);
         } else {
+            //show money notes inventory
             String denomsAvailable = "\n\nMoney Notes Denominations available: ";
             int count = 0;
             for (int i = 0; denomsTokens.hasMoreTokens(); i++) {
@@ -152,6 +138,7 @@ public class TouchDisplayEmulatorController {
                 blankAmountStringBuild.append(denomsAvailable);
             }
             if (detail.length > 1) {
+                //non-critical situation
                 blankAmountStringBuild.append("\n\nComponents not working: ");
                 StringTokenizer malTokens = new StringTokenizer(detail[1]);
                 blankAmountStringBuild.append(malTokens.nextToken());
@@ -162,7 +149,6 @@ public class TouchDisplayEmulatorController {
         }
         blankTopLabel.setText("Welcome to ATM system emulator");
         blankScreenLabel.setText(blankAmountStringBuild.toString());
-        //show which money notes available on welcome page
         blankAmountStringBuild.delete(0, blankAmountStringBuild.length());
     }
 
@@ -241,9 +227,7 @@ public class TouchDisplayEmulatorController {
                 }
             }
             accounts = remainingAccounts;
-            //if accounts.length <= 0 pop error (or do the operating account elimination in ATMSS)
         }
-        //need to remove or disable the button for the operating account in money transfer part
         int accNum = accounts.length;
         int remainingAcc = accNum;
         int maxAccNumEachSide = 2;
