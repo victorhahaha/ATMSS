@@ -462,18 +462,24 @@ public class ATMSS extends AppThread {
                 }
             } else if (msg.getDetails().compareToIgnoreCase("Enter") == 0) {
                 //send amountTyped to BAMS
+                int amount = 0;
                 if (amountTyped.equals("")) {       //prevent enter nothing
                     amountTyped = "0";
+                }
+                try {
+                    amount = Integer.parseInt(amountTyped);
+                } catch (NumberFormatException e) {
+                    touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.Error, "Invalid Amount"));
                 }
                 //look at which transaction it is
                 if (transaction.equals("Cash Withdrawal")) {
                     //only amount that is divisible by 100 can be withdrawn
-                    if (Integer.parseInt(amountTyped) % 100 == 0 && Integer.parseInt(amountTyped) > 0) {    //check if amount is divisible by 100 and larger than 0
+                    if (amount % 100 == 0 && amount > 0) {    //check if amount is divisible by 100 and larger than 0
                         //send bams withdraw request
                         bamsThreadMBox.send(new Msg(id, mbox, Msg.Type.CashWithdraw, cardNum + " " + selectedAcc + " " + amountTyped));
                     } else {
                         //return error and reject withdraw request
-                        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.Error, "Withdraw Amount should be divisible by 100"));
+                        touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.Error, "Invalid Amount"));
                     }
                 } else if (transaction.equals("Money Transfer")) {
                     bamsThreadMBox.send(new Msg(id, mbox, Msg.Type.MoneyTransferRequest, cardNum + " " + selectedAcc + " " + transferAcc + " " + amountTyped));
@@ -590,7 +596,7 @@ public class ATMSS extends AppThread {
                 case "Account Balance Enquiry":
 
                 default:
-                    String status = "";
+                    String status;
                     //see the resulting amount success or fail
                     if (amountTyped.equals("-1") || amountTyped.equals("")) {
                         status = "Fail";
