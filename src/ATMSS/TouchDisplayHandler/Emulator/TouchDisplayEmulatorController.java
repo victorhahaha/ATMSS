@@ -176,37 +176,7 @@ public class TouchDisplayEmulatorController {
         currentPage = 3;
         menuLabel.setText("Welcome back, "+ operatingAcc +"\n\nPlease select ...");
         mainMenuReset();
-        int rectEachSide = 3;
-        Rectangle[] rectLeft = new Rectangle[rectEachSide];
-        Rectangle[] rectRight = new Rectangle[rectEachSide];
-        Label[] leftLabel = new Label[rectEachSide];
-        Label[] rightLabel = new Label[rectEachSide];
-        //if less than 6 functions on one menu page, those no function part will be blank
-        //if more than 6 functions on one menu page, rightLabel[2] will be for the next page
-        //if only 6 functions on one menu page, rightLabel[2] will be normal
-        int notSetFunc = funcAry.length;
-        int menuPageNum = 0;
-        int funcPerPage = rectEachSide * 2 - 1;
-        for (int i = 0; i < rectEachSide; i++) {
-            rectLeft[i] = rectangleInit(rectLeft[i]);
-            rectRight[i] = rectangleInit(rectRight[i]);
-            leftLabel[i] = labelInit(leftLabel[i]);
-            rightLabel[i] = labelInit(rightLabel[i]);
-            //this does not include more than 6 cases
-            if (notSetFunc > 2 && i == rectEachSide - 1) {      //if more than 6, not finish
-                leftLabel[i].setText(funcAry[i * 2 + menuPageNum * funcPerPage]);
-                rightLabel[i].setText("Next Page");
-                menuPageNum++;      //may change later
-            } else if (notSetFunc > 1) {            //normal
-                leftLabel[i].setText(funcAry[i * 2 + menuPageNum * funcPerPage]);
-                rightLabel[i].setText(funcAry[i * 2 + 1 + menuPageNum * funcPerPage]);
-                notSetFunc -= 2;
-            } else if (notSetFunc > 0) {            //less than 6
-                leftLabel[i].setText(funcAry[i * 2]);
-                notSetFunc--;
-            }
-        }
-        menuStackPaneSetting(rectLeft, rectRight, leftLabel, rightLabel, rectEachSide * 2);
+        menuDrawing(3, funcAry);
     }
 
     public void accountSelectGUI(String acc, boolean transfer) {
@@ -228,31 +198,7 @@ public class TouchDisplayEmulatorController {
             }
             accounts = remainingAccounts;
         }
-        int accNum = accounts.length;
-        int remainingAcc = accNum;
-        int maxAccNumEachSide = 2;
-        Rectangle[] leftAcc = new Rectangle[maxAccNumEachSide];
-        Rectangle[] rightAcc = new Rectangle[maxAccNumEachSide];
-        Label[] leftLabel = new Label[maxAccNumEachSide];
-        Label[] rightLabel = new Label[maxAccNumEachSide];
-        for (int i = 0; i < maxAccNumEachSide; i++) {
-            leftAcc[i] = rectangleInit(leftAcc[i]);
-            rightAcc[i] = rectangleInit(rightAcc[i]);
-            leftLabel[i] = labelInit(leftLabel[i]);
-            rightLabel[i] = labelInit(rightLabel[i]);
-            if (remainingAcc == 1) {
-                leftLabel[i].setText(accounts[i * 2]);
-                remainingAcc--;
-            } else if (remainingAcc <= 0) {
-                break;
-            } else {
-                leftLabel[i].setText(accounts[i * 2]);
-                rightLabel[i].setText(accounts[i * 2 + 1]);
-                remainingAcc -= 2;
-            }
-        }
-        menuFourButtons(leftAcc, rightAcc, leftLabel, rightLabel);
-
+        menuDrawing(2, accounts);
     }
 
     public void cashDepositPage() {
@@ -381,29 +327,49 @@ public class TouchDisplayEmulatorController {
         menuLabel.setAlignment(Pos.TOP_CENTER);
     }
 
-    private void menuFourButtons(Rectangle[] leftRect, Rectangle[] rightRect, Label[] leftLabel, Label[] rightLabel) {
-        menuLabel.setAlignment(Pos.CENTER);
-        menuLabel.setPrefHeight(230);
-        buttonHBox.setPrefHeight(200);
-        menuStackPaneSetting(leftRect, rightRect, leftLabel, rightLabel, 4);
+    private void menuDrawing(int rectEachSide, String[] array) {
+        menuDrawing(rectEachSide, array, 0);
     }
 
-    private void menuStackPaneSetting(Rectangle[] leftRect, Rectangle[] rightRect, Label[] leftLabel, Label[] rightLabel, int numButton) {
+    private void menuDrawing(int rectEachSide, String[] array, int menuPageNum) {
+        Rectangle[] rectAry = new Rectangle[rectEachSide * 2];
+        Label[] labelAry = new Label[rectEachSide * 2];
+        //if less than 6 functions on one menu page, those no function part will be blank
+        //if more than 6 functions on one menu page, rightLabel[2] will be for the next page
+        //if only 6 functions on one menu page, rightLabel[2] will be normal
+        int notSetFunc = array.length;
+        int funcPerPage = rectEachSide * 2 - 1;
+        for (int i = 0; i < rectEachSide * 2; i++) {
+            rectAry[i] = rectangleInit(rectAry[i]);
+            labelAry[i] = labelInit(labelAry[i]);
+            if (notSetFunc > 0) {
+                labelAry[i].setText(array[i + menuPageNum * funcPerPage]);
+                notSetFunc--;
+            }
+            if (notSetFunc > 2 && i == funcPerPage) {
+                labelAry[i++].setText("Next Page");
+                menuPageNum++;
+            }
+        }
+        menuStackPaneSetting(rectAry, labelAry, rectEachSide * 2);
+    }
+
+    private void menuStackPaneSetting(Rectangle[] rectAry, Label[] labelAry, int numButton) {
+        if (numButton == 4) {
+            menuLabel.setAlignment(Pos.CENTER);
+            menuLabel.setPrefHeight(230);
+            buttonHBox.setPrefHeight(200);
+        }
         StackPane[] stack = new StackPane[numButton];
         for (int i = 0; i < stack.length; i++) {
             stack[i] = new StackPane();
-            int j = i / 2;
+            stack[i].getChildren().addAll(labelAry[i], rectAry[i]);
+            if (labelAry[i].getText().equals("")) {
+                stack[i].setDisable(true);
+            }
             if (i % 2 == 0) {
-                stack[i].getChildren().addAll(leftLabel[j], leftRect[j]);
-                if (leftLabel[j].getText().equals("")) {
-                    stack[i].setDisable(true);
-                }
                 vboxLeft.getChildren().add(stack[i]);
             } else {
-                stack[i].getChildren().addAll(rightLabel[j], rightRect[j]);
-                if (rightLabel[j].getText().equals("")) {
-                    stack[i].setDisable(true);
-                }
                 vboxRight.getChildren().add(stack[i]);
             }
             stack[i].setOnMousePressed(this::td_mouseClick);
@@ -413,20 +379,7 @@ public class TouchDisplayEmulatorController {
     private void transactionFinalPage() {
         String[] labelText = {"Continue Transaction and Print Advice", "End Transaction and Print Advice", "Continue Transaction", "End Transaction"};
         int maxEachSide = 2;
-        Rectangle[] leftButtons = new Rectangle[maxEachSide];
-        Rectangle[] rightButtons = new Rectangle[maxEachSide];
-        Label[] leftLabels = new Label[maxEachSide];
-        Label[] rightLabels = new Label[maxEachSide];
-        for (int i = 0; i < maxEachSide; i++) {
-            leftButtons[i] = rectangleInit(leftButtons[i]);
-            rightButtons[i] = rectangleInit(rightButtons[i]);
-            leftLabels[i] = labelInit(leftLabels[i]);
-            rightLabels[i] = labelInit(rightLabels[i]);
-            leftLabels[i].setText(labelText[i * 2]);
-            rightLabels[i].setText(labelText[i * 2 + 1]);
-        }
-        menuFourButtons(leftButtons, rightButtons, leftLabels, rightLabels);
-
+        menuDrawing(maxEachSide, labelText);
     }
 
     protected void errorPage(String errorMsg) {
