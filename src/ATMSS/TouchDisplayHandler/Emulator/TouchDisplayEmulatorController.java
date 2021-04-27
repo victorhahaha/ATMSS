@@ -342,7 +342,7 @@ public class TouchDisplayEmulatorController {
         for (int i = 0; i < rectEachSide * 2; i++) {
             rectAry[i] = rectangleInit(rectAry[i]);
             labelAry[i] = labelInit(labelAry[i]);
-            if (notSetFunc > 0 && i == funcPerPage) {
+            if (notSetFunc > 1 && i == funcPerPage) {
                 labelAry[i].setText("Next Page");
                 menuPageNum++;
             } else if (notSetFunc > 0) {

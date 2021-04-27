@@ -31,7 +31,7 @@ public class bamsThreadHandler extends AppThread {
             Msg msg = mbox.receive();        //for this specific HW's MBox receive //this is based on the inheritance property from appthread and Handlers
 
             log.fine(id + ": message received: [" + msg + "].");
-            if (!operate && !(msg.getType().equals(Msg.Type.Terminate) || msg.getType().equals(Msg.Type.Reset))) {
+            if (!operate && !(msg.getType().equals(Msg.Type.Terminate) || msg.getType().equals(Msg.Type.Reset) || msg.getType().equals(Msg.Type.TimesUp))) {
                 log.info(id +": not operating");
                 continue;
             }

@@ -350,12 +350,16 @@ public class ATMSS extends AppThread {
                 case ErrorRedirect:         //redirect error page to another page
                     switch (transaction) {
                         case "":            //In enter PIN page
-                            if (errorCount >= 3 || msg.getDetails().contains("Network")) {
-                                touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "Welcome_" + denom100 + " " + denom500 + " " + denom1000 + "/" + malfunctions));
-                                allReset();
-                            } else {
+                            if (msg.getDetails().contains("PIN")) {
                                 getPin = true;
                                 touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "PIN Required"));
+                            } else {
+                                touchDisplayMBox.send(new Msg(id, mbox, Msg.Type.TD_UpdateDisplay, "Welcome_" + denom100 + " " + denom500 + " " + denom1000 + "/" + malfunctions));
+                                if (malfunctions.equals("Out of Service")) {
+                                    notOperate();
+                                } else {
+                                    allReset();
+                                }
                             }
                             break;
 

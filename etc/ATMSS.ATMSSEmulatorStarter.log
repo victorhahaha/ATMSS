@@ -1,158 +1,170 @@
-210426-10:25:12 [INFO] -- 
-210426-10:25:12 [INFO] -- 
-210426-10:25:12 [INFO] -- ============================================================
-210426-10:25:12 [INFO] -- ATMSSStarter: Application Starting...
-210426-10:25:14 [INFO] -- BuzzerHandler: starting...
-210426-10:25:14 [INFO] -- DispenserSlotHandler: starting...
-210426-10:25:14 [INFO] -- DepositSlotHandler: starting...
-210426-10:25:14 [INFO] -- AdvicePrinterHandler: starting...
-210426-10:25:14 [INFO] -- KeypadHandler: starting...
-210426-10:25:14 [INFO] -- TouchDisplayHandler: starting...
-210426-10:25:14 [INFO] -- CardReaderHandler: starting...
-210426-10:25:14 [INFO] -- timer: starting...
-210426-10:25:15 [INFO] -- BAMSThreadHandler: starting...
-210426-10:25:15 [INFO] -- ATMSS: starting...
-210426-10:25:15 [INFO] -- AdvicePrinterHandler: reset
-210426-10:25:15 [INFO] -- AdvicePrinterHandler: advice printed
-210426-10:25:15 [INFO] -- BAMSThreadHandler: bams timer reset
-210426-10:25:15 [INFO] -- BuzzerHandler: reset
-210426-10:25:15 [INFO] -- BuzzerHandler: alert -- 
-210426-10:25:15 [INFO] -- ATMSS: bams timer reset
-210426-10:25:15 [INFO] -- ATMSS AdvicePrinterHandler reset: healthy
-210426-10:25:15 [INFO] -- CardReaderHandler: reset
-210426-10:25:15 [INFO] -- CardReaderHandler: card inserted
-210426-10:25:15 [INFO] -- TouchDisplayHandler: reset
-210426-10:25:15 [INFO] -- CardReaderHandler: card ejected
-210426-10:25:15 [INFO] -- CardReaderHandler: card removed
-210426-10:25:15 [INFO] -- CardReaderHandler: card inserted
-210426-10:25:15 [INFO] -- CardReaderHandler: card retained
-210426-10:25:15 [INFO] -- KeypadHandler: reset
-210426-10:25:15 [INFO] -- ATMSS: bams timer reset
-210426-10:25:15 [INFO] -- DispenserSlotHandler: reset
-210426-10:25:15 [INFO] -- DispenserSlotHandler: Opening Dispenser Slot
-210426-10:25:15 [INFO] -- ATMSS BuzzerHandler reset: healthy
-210426-10:25:15 [INFO] -- ATMSS: bams timer reset
-210426-10:25:15 [INFO] -- ATMSS CardReaderHandler reset: healthy
-210426-10:25:15 [INFO] -- ATMSS: bams timer reset
-210426-10:25:15 [INFO] -- ATMSS TouchDisplayHandler reset: healthy
-210426-10:25:15 [INFO] -- DepositSlotHandler: reset
-210426-10:25:15 [INFO] -- DepositSlotHandlerOpening Deposit Slot
-210426-10:25:15 [INFO] -- DepositSlotHandlerClosing Deposit Slot
-210426-10:25:15 [INFO] -- DepositSlotHandlerClosing Deposit Slot
-210426-10:25:15 [INFO] -- DispenserSlotHandler: cash dispensed
-210426-10:25:15 [INFO] -- ATMSS: bams timer reset
-210426-10:25:15 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/
-210426-10:25:15 [INFO] -- ATMSS DepositSlotHandler reset: healthy
-210426-10:25:15 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/
-210426-10:25:15 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/
-210426-10:25:15 [INFO] -- DispenserSlotHandler: denoms inventory: $100: 10000, $500: 10000, $1000: 10000
-210426-10:25:15 [INFO] -- DispenserSlotHandler: Closing Dispenser Slot
-210426-10:25:15 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/
-210426-10:25:15 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/
-210426-10:25:15 [INFO] -- ATMSS: bams timer reset
-210426-10:25:15 [INFO] -- ATMSS DispenserSlotHandler reset: healthy
-210426-10:25:15 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/
-210426-10:25:15 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:15 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:15 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:15 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:15 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:15 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:15 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:19 [INFO] -- CardReaderHandler: card inserted
-210426-10:25:19 [INFO] -- ATMSS: bams timer reset
-210426-10:25:19 [INFO] -- CardInserted: 4107-7014
-210426-10:25:19 [INFO] -- TouchDisplayHandler: update display -- PIN Required
-210426-10:25:19 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:19 [INFO] -- KeypadHandler: alert user-- 
-210426-10:25:21 [INFO] -- ATMSS: bams timer reset
-210426-10:25:21 [INFO] -- KeyPressed: 4
-210426-10:25:21 [INFO] -- ATMSS: 4 is pressed
-210426-10:25:21 [INFO] -- KeypadHandler: alert user-- 
-210426-10:25:21 [INFO] -- TouchDisplayHandler: update display -- enterPIN
-210426-10:25:21 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:21 [INFO] -- ATMSS: bams timer reset
-210426-10:25:21 [INFO] -- KeyPressed: 5
-210426-10:25:21 [INFO] -- ATMSS: 5 is pressed
-210426-10:25:21 [INFO] -- KeypadHandler: alert user-- 
-210426-10:25:21 [INFO] -- TouchDisplayHandler: update display -- enterPIN
-210426-10:25:21 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:22 [INFO] -- ATMSS: bams timer reset
-210426-10:25:22 [INFO] -- KeyPressed: 6
-210426-10:25:22 [INFO] -- ATMSS: 6 is pressed
-210426-10:25:22 [INFO] -- KeypadHandler: alert user-- 
-210426-10:25:22 [INFO] -- TouchDisplayHandler: update display -- enterPIN
-210426-10:25:22 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:22 [INFO] -- ATMSS: bams timer reset
-210426-10:25:22 [INFO] -- KeyPressed: 1
-210426-10:25:22 [INFO] -- ATMSS: 1 is pressed
-210426-10:25:22 [INFO] -- KeypadHandler: alert user-- 
-210426-10:25:22 [INFO] -- TouchDisplayHandler: update display -- enterPIN
-210426-10:25:22 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:23 [INFO] -- ATMSS: bams timer reset
-210426-10:25:23 [INFO] -- KeyPressed: 2
-210426-10:25:23 [INFO] -- ATMSS: 2 is pressed
-210426-10:25:23 [INFO] -- KeypadHandler: alert user-- 
-210426-10:25:23 [INFO] -- TouchDisplayHandler: update display -- enterPIN
-210426-10:25:23 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:23 [INFO] -- ATMSS: bams timer reset
-210426-10:25:23 [INFO] -- KeyPressed: 3
-210426-10:25:23 [INFO] -- ATMSS: 3 is pressed
-210426-10:25:23 [INFO] -- TouchDisplayHandler: update display -- enterPIN
-210426-10:25:23 [INFO] -- KeypadHandler: alert user-- 
-210426-10:25:23 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:24 [INFO] -- ATMSS: bams timer reset
-210426-10:25:24 [INFO] -- KeyPressed: 7
-210426-10:25:24 [INFO] -- ATMSS: 7 is pressed
-210426-10:25:24 [INFO] -- TouchDisplayHandler: update display -- enterPIN
-210426-10:25:24 [INFO] -- KeypadHandler: alert user-- 
-210426-10:25:24 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:24 [INFO] -- ATMSS: bams timer reset
-210426-10:25:24 [INFO] -- KeyPressed: 8
-210426-10:25:24 [INFO] -- ATMSS: 8 is pressed
-210426-10:25:24 [INFO] -- KeypadHandler: alert user-- 
-210426-10:25:24 [INFO] -- TouchDisplayHandler: update display -- enterPIN
-210426-10:25:24 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:24 [INFO] -- ATMSS: bams timer reset
-210426-10:25:24 [INFO] -- KeyPressed: 9
-210426-10:25:24 [INFO] -- ATMSS: 9 is pressed
-210426-10:25:24 [INFO] -- KeypadHandler: alert user-- 
-210426-10:25:24 [INFO] -- TouchDisplayHandler: update display -- enterPIN
-210426-10:25:24 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
-210426-10:25:25 [INFO] -- ATMSS: bams timer reset
-210426-10:25:25 [INFO] -- KeyPressed: Enter
-210426-10:25:25 [INFO] -- ATMSS: Enter is pressed
-210426-10:25:25 [INFO] -- ATMSS : verifying cardnum and pin
-210426-10:25:25 [INFO] -- pin: 456123789
-210426-10:25:25 [INFO] -- KeypadHandler: alert user-- 
-210426-10:25:25 [INFO] -- BAMSThreadHandler: bams timer reset
-210426-10:25:26 [INFO] -- BAMSThreadHandler : successful login!
-210426-10:25:26 [INFO] -- ATMSS: bams timer reset
-210426-10:25:26 [INFO] -- TouchDisplayHandler: changing login status
-210426-10:25:26 [INFO] -- ATMSS: bams timer reset
-210426-10:25:26 [INFO] -- BAMSThreadHandler: bams timer reset
-210426-10:25:26 [INFO] -- ATMSS: bams timer reset
-210426-10:25:26 [INFO] -- TouchDisplayHandler: select account
-210426-10:25:26 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
-210426-10:25:27 [INFO] -- TouchDisplayHandler: update display -- MainMenu
-210426-10:25:27 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayMainMenu.fxml
-210426-10:25:27 [INFO] -- ATMSS: bams timer reset
-210426-10:25:29 [INFO] -- ATMSS: bams timer reset
-210426-10:25:29 [INFO] -- MouseCLicked: Next Page
-210426-10:25:33 [INFO] -- 
-210426-10:25:33 [INFO] -- 
-210426-10:25:33 [INFO] -- ============================================================
-210426-10:25:33 [INFO] -- ATMSSStarter: Application Stopping...
-210426-10:25:33 [INFO] -- BAMSThreadHandler: bams timer reset
-210426-10:25:33 [INFO] -- BAMSThreadHandler: terminating...
-210426-10:25:33 [INFO] -- CardReaderHandler: terminating...
-210426-10:25:33 [INFO] -- KeypadHandler: terminating...
-210426-10:25:33 [INFO] -- ATMSS: bams timer reset
-210426-10:25:33 [INFO] -- ATMSS: terminating...
-210426-10:25:33 [INFO] -- TouchDisplayHandler: terminating...
-210426-10:25:33 [INFO] -- BuzzerHandler: terminating...
-210426-10:25:33 [INFO] -- timer: received terminate!
-210426-10:25:33 [INFO] -- timer: terminating...
-210426-10:25:33 [INFO] -- DepositSlotHandler: terminating...
-210426-10:25:33 [INFO] -- DispenserSlotHandler: terminating...
-210426-10:25:33 [INFO] -- AdvicePrinterHandler: terminating...
+210426-18:48:30 [INFO] -- 
+210426-18:48:30 [INFO] -- 
+210426-18:48:30 [INFO] -- ============================================================
+210426-18:48:30 [INFO] -- ATMSSStarter: Application Starting...
+210426-18:48:33 [INFO] -- BuzzerHandler: starting...
+210426-18:48:33 [INFO] -- DispenserSlotHandler: starting...
+210426-18:48:33 [INFO] -- KeypadHandler: starting...
+210426-18:48:33 [INFO] -- AdvicePrinterHandler: starting...
+210426-18:48:33 [INFO] -- CardReaderHandler: starting...
+210426-18:48:33 [INFO] -- BAMSThreadHandler: starting...
+210426-18:48:33 [INFO] -- timer: starting...
+210426-18:48:33 [INFO] -- ATMSS: starting...
+210426-18:48:33 [INFO] -- TouchDisplayHandler: starting...
+210426-18:48:33 [INFO] -- TouchDisplayHandler: reset
+210426-18:48:33 [INFO] -- AdvicePrinterHandler: reset
+210426-18:48:33 [INFO] -- AdvicePrinterHandler: advice printed
+210426-18:48:33 [INFO] -- BAMSThreadHandler: bams timer reset
+210426-18:48:33 [INFO] -- BuzzerHandler: reset
+210426-18:48:33 [INFO] -- BuzzerHandler: alert -- 
+210426-18:48:33 [INFO] -- CardReaderHandler: reset
+210426-18:48:33 [INFO] -- CardReaderHandler: card inserted
+210426-18:48:33 [INFO] -- CardReaderHandler: card ejected
+210426-18:48:33 [INFO] -- CardReaderHandler: card removed
+210426-18:48:33 [INFO] -- CardReaderHandler: card inserted
+210426-18:48:33 [INFO] -- CardReaderHandler: card retained
+210426-18:48:33 [INFO] -- KeypadHandler: reset
+210426-18:48:33 [INFO] -- ATMSS: bams timer reset
+210426-18:48:33 [INFO] -- DepositSlotHandler: starting...
+210426-18:48:33 [INFO] -- ATMSS TouchDisplayHandler reset: healthy
+210426-18:48:33 [INFO] -- ATMSS: bams timer reset
+210426-18:48:33 [INFO] -- DispenserSlotHandler: reset
+210426-18:48:33 [INFO] -- DispenserSlotHandler: Opening Dispenser Slot
+210426-18:48:33 [INFO] -- DispenserSlotHandler: cash dispensed
+210426-18:48:33 [INFO] -- DispenserSlotHandler: denoms inventory: $100: 10000, $500: 10000, $1000: 10000
+210426-18:48:33 [INFO] -- DispenserSlotHandler: Closing Dispenser Slot
+210426-18:48:33 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/
+210426-18:48:33 [INFO] -- DepositSlotHandler: reset
+210426-18:48:33 [INFO] -- DepositSlotHandlerOpening Deposit Slot
+210426-18:48:33 [INFO] -- ATMSS BuzzerHandler reset: healthy
+210426-18:48:33 [INFO] -- ATMSS: bams timer reset
+210426-18:48:33 [INFO] -- ATMSS AdvicePrinterHandler reset: healthy
+210426-18:48:33 [INFO] -- ATMSS: bams timer reset
+210426-18:48:33 [INFO] -- ATMSS CardReaderHandler reset: healthy
+210426-18:48:33 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/
+210426-18:48:33 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/
+210426-18:48:33 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/
+210426-18:48:33 [INFO] -- DepositSlotHandlerClosing Deposit Slot
+210426-18:48:33 [INFO] -- ATMSS: bams timer reset
+210426-18:48:33 [INFO] -- ATMSS DispenserSlotHandler reset: healthy
+210426-18:48:33 [INFO] -- ATMSS: bams timer reset
+210426-18:48:33 [INFO] -- ATMSS DepositSlotHandler reset: healthy
+210426-18:48:33 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/
+210426-18:48:33 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/
+210426-18:48:33 [INFO] -- DepositSlotHandlerClosing Deposit Slot
+210426-18:48:33 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:34 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:34 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:34 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:34 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:34 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:34 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:39 [INFO] -- CardReaderHandler: card inserted
+210426-18:48:39 [INFO] -- ATMSS: bams timer reset
+210426-18:48:39 [INFO] -- CardInserted: 4107-7014
+210426-18:48:39 [INFO] -- TouchDisplayHandler: update display -- PIN Required
+210426-18:48:39 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:39 [INFO] -- KeypadHandler: alert user-- 
+210426-18:48:41 [INFO] -- ATMSS: bams timer reset
+210426-18:48:41 [INFO] -- KeyPressed: 4
+210426-18:48:41 [INFO] -- ATMSS: 4 is pressed
+210426-18:48:41 [INFO] -- KeypadHandler: alert user-- 
+210426-18:48:41 [INFO] -- TouchDisplayHandler: update display -- enterPIN
+210426-18:48:41 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:42 [INFO] -- ATMSS: bams timer reset
+210426-18:48:42 [INFO] -- KeyPressed: 5
+210426-18:48:42 [INFO] -- ATMSS: 5 is pressed
+210426-18:48:42 [INFO] -- TouchDisplayHandler: update display -- enterPIN
+210426-18:48:42 [INFO] -- KeypadHandler: alert user-- 
+210426-18:48:42 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:42 [INFO] -- ATMSS: bams timer reset
+210426-18:48:42 [INFO] -- KeyPressed: 6
+210426-18:48:42 [INFO] -- ATMSS: 6 is pressed
+210426-18:48:42 [INFO] -- KeypadHandler: alert user-- 
+210426-18:48:42 [INFO] -- TouchDisplayHandler: update display -- enterPIN
+210426-18:48:42 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:43 [INFO] -- ATMSS: bams timer reset
+210426-18:48:43 [INFO] -- KeyPressed: 1
+210426-18:48:43 [INFO] -- ATMSS: 1 is pressed
+210426-18:48:43 [INFO] -- KeypadHandler: alert user-- 
+210426-18:48:43 [INFO] -- TouchDisplayHandler: update display -- enterPIN
+210426-18:48:43 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:43 [INFO] -- ATMSS: bams timer reset
+210426-18:48:43 [INFO] -- KeyPressed: 2
+210426-18:48:43 [INFO] -- ATMSS: 2 is pressed
+210426-18:48:43 [INFO] -- KeypadHandler: alert user-- 
+210426-18:48:43 [INFO] -- TouchDisplayHandler: update display -- enterPIN
+210426-18:48:43 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:44 [INFO] -- ATMSS: bams timer reset
+210426-18:48:44 [INFO] -- KeyPressed: 3
+210426-18:48:44 [INFO] -- ATMSS: 3 is pressed
+210426-18:48:44 [INFO] -- KeypadHandler: alert user-- 
+210426-18:48:44 [INFO] -- TouchDisplayHandler: update display -- enterPIN
+210426-18:48:44 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:44 [INFO] -- ATMSS: bams timer reset
+210426-18:48:44 [INFO] -- KeyPressed: 7
+210426-18:48:44 [INFO] -- ATMSS: 7 is pressed
+210426-18:48:44 [INFO] -- KeypadHandler: alert user-- 
+210426-18:48:44 [INFO] -- TouchDisplayHandler: update display -- enterPIN
+210426-18:48:44 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:45 [INFO] -- ATMSS: bams timer reset
+210426-18:48:45 [INFO] -- KeyPressed: 8
+210426-18:48:45 [INFO] -- ATMSS: 8 is pressed
+210426-18:48:45 [INFO] -- KeypadHandler: alert user-- 
+210426-18:48:45 [INFO] -- TouchDisplayHandler: update display -- enterPIN
+210426-18:48:45 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:45 [INFO] -- ATMSS: bams timer reset
+210426-18:48:45 [INFO] -- KeyPressed: 9
+210426-18:48:45 [INFO] -- ATMSS: 9 is pressed
+210426-18:48:45 [INFO] -- KeypadHandler: alert user-- 
+210426-18:48:45 [INFO] -- TouchDisplayHandler: update display -- enterPIN
+210426-18:48:45 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:46 [INFO] -- ATMSS: bams timer reset
+210426-18:48:46 [INFO] -- KeyPressed: Enter
+210426-18:48:46 [INFO] -- ATMSS: Enter is pressed
+210426-18:48:46 [INFO] -- ATMSS : verifying cardnum and pin
+210426-18:48:46 [INFO] -- KeypadHandler: alert user-- 
+210426-18:48:46 [INFO] -- pin: 456123789
+210426-18:48:46 [INFO] -- BAMSThreadHandler: bams timer reset
+210426-18:48:47 [SEVERE] -- BAMSThreadHandler: Network connection problem occurs
+210426-18:48:47 [INFO] -- ATMSS: bams timer reset
+210426-18:48:47 [SEVERE] -- ATMSS: BAMSThreadHandler (Error) -- Network connection problem
+210426-18:48:47 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/Out of Service
+210426-18:48:47 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:48:47 [INFO] -- KeypadHandler: shutdown
+210426-18:48:47 [INFO] -- DepositSlotHandler: shutdown
+210426-18:48:47 [INFO] -- CardReaderHandler: shutdown
+210426-18:48:47 [INFO] -- BAMSThreadHandler: bams timer reset
+210426-18:48:47 [INFO] -- DispenserSlotHandler: shutdown
+210426-18:48:47 [INFO] -- AdvicePrinterHandler: shutdown
+210426-18:48:47 [INFO] -- BuzzerHandler: shutdown
+210426-18:49:02 [INFO] -- BAMSThreadHandler: not operating
+210426-18:49:07 [INFO] -- ATMSS: bams timer reset
+210426-18:49:07 [SEVERE] -- ATMSS : Unable to receive response from BAMS within acceptable time frame!
+210426-18:49:07 [WARNING] -- timer: ATMSS cancelling timer: [85123] TIMER NOT FOUND!!
+210426-18:49:07 [INFO] -- TouchDisplayHandler: update display -- Welcome_10000 10000 10000/Out of Service
+210426-18:49:07 [INFO] -- BuzzerHandler: shutdown
+210426-18:49:07 [INFO] -- KeypadHandler: shutdown
+210426-18:49:07 [INFO] -- BAMSThreadHandler: not operating
+210426-18:49:07 [INFO] -- AdvicePrinterHandler: shutdown
+210426-18:49:07 [INFO] -- DepositSlotHandler: shutdown
+210426-18:49:07 [INFO] -- TouchDisplayHandler: loading fxml: TouchDisplayEmulator.fxml
+210426-18:49:07 [INFO] -- DispenserSlotHandler: shutdown
+210426-18:49:07 [INFO] -- CardReaderHandler: shutdown
+210426-18:49:19 [INFO] -- 
+210426-18:49:19 [INFO] -- 
+210426-18:49:19 [INFO] -- ============================================================
+210426-18:49:19 [INFO] -- ATMSSStarter: Application Stopping...
+210426-18:49:19 [INFO] -- BAMSThreadHandler: bams timer reset
+210426-18:49:19 [INFO] -- TouchDisplayHandler: terminating...
+210426-18:49:19 [INFO] -- timer: received terminate!
+210426-18:49:19 [INFO] -- timer: terminating...
+210426-18:49:19 [INFO] -- BuzzerHandler: terminating...
+210426-18:49:19 [INFO] -- DepositSlotHandler: terminating...
+210426-18:49:19 [INFO] -- AdvicePrinterHandler: terminating...
+210426-18:49:19 [INFO] -- KeypadHandler: terminating...
+210426-18:49:19 [INFO] -- DispenserSlotHandler: terminating...
+210426-18:49:19 [INFO] -- BAMSThreadHandler: terminating...
+210426-18:49:19 [INFO] -- ATMSS: bams timer reset
+210426-18:49:19 [INFO] -- ATMSS: terminating...
+210426-18:49:19 [INFO] -- CardReaderHandler: terminating...
